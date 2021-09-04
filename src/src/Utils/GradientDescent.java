@@ -18,8 +18,13 @@ public class GradientDescent {
         tunerVar = startTunerVar;
     }
 
-    public void getNextTunerVar(double costVal, double learningRate){
+    /**
+     * Uses Gradient descent to get next tuner variable
+     */
+
+    public void getNextTunerVar(double[] loss, double learningRate){
         //data and cost done in AS later
+        double costVal = getCost(loss);
         tunerVar += costVal * learningRate;
     }
 
