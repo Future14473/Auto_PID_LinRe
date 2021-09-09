@@ -4,7 +4,7 @@ package Utils;
 import java.util.ArrayList;
 
 public class GradientDescent {
-    double learningRate, currentTunerVar, lastCostVal, currentCostVal, lastTunerVar;
+    double learningRate, lastCostVal, currentCostVal, lastTunerVar;
     /*
      * Gradient descent is the process of optimizing the next guess for kP
      * Iterative optimizing algorithm for finding a local minimum of a differential function
@@ -15,9 +15,8 @@ public class GradientDescent {
     //          guess and error(in coding train video) is actually our Cost function because it tells us how off we are
     // 3) Update tuning constant kTunerVar += Cost(kTunerVar Current) * learning rate
 
-    public GradientDescent(double startLearningRate , double startTunerVar){
+    public GradientDescent(double startLearningRate){
         learningRate = startLearningRate;
-        currentTunerVar = startTunerVar;
         // run
         // calc cost
         // set last tuner var to current tuner var; set current tuner var to arbitrary number
@@ -59,17 +58,9 @@ public class GradientDescent {
         this.lastCostVal = lastCostVal;
     }
 
-    public void setCurrentTunerVar(double currentTunerVar) {
-        this.currentTunerVar = currentTunerVar;
-    }
 
     public void setLastTunerVar(double lastTunerVar) {
         this.lastTunerVar = lastTunerVar;
-    }
-
-
-    public double getCurrentTunerVar() {
-        return currentTunerVar;
     }
 
     public void setLearningRate(double learningRate) {
