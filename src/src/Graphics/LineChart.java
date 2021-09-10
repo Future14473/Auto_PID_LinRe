@@ -42,6 +42,6 @@ public class LineChart extends JFrame {
     }
 
     public void addDataToChart(double x, double y){
-        dataset.addValue(y, "Tuning Variable", String.format("% .0f", x));
+        dataset.addValue(y, "Tuning Variable", String.format("% .2f", x));
     }
 }
