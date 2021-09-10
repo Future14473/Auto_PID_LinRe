@@ -21,14 +21,13 @@ public class Main {
         double learningRate = 0.02;
         GradientDescent testGrad = new GradientDescent(learningRate);
 
+        int sign = -1;
         // first 2 kV and Cost then you can loop
-        double lastTunerVar = 5, lastLoss = testFunc(lastTunerVar);
+        double lastTunerVar = 5 * sign, lastLoss = testFunc(lastTunerVar);
 
         //current tuner var is just our manually inputted next guess
-        double currentTunerVar = 4, currentLoss = testFunc(currentTunerVar);
+        double currentTunerVar = 4 * sign, currentLoss = testFunc(currentTunerVar);
 
-//        int epochs = 500;
-//        for (int i = 0; i < epochs; i++) {
         int i = 0;
         while(! scanner.nextLine().equals(" ")){
             double nextTunerVar = testGrad.getNextTunerVar(currentLoss, lastLoss,currentTunerVar, lastTunerVar);
@@ -50,6 +49,8 @@ public class Main {
     static double testFunc(double n){
 //        return Math.pow(n, 10);
 //        return Math.pow(n, 3) + Math.pow(n, 2) + 7;
-        return Math.pow(n+1, 3); // this is (x+1)^3
+//        return Math.pow(n+1, 3); // this is (x+1)^3
+//        return Math.pow(n, 2);
+        return Math.pow(n, 3);
     }
 }
