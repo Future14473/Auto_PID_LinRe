@@ -17,6 +17,7 @@ import java.awt.*;
  */
 public class LineChart extends JFrame {
     DefaultCategoryDataset dataset;
+    String xAxis = "Example Tuning Variable";
     public LineChart() {
         super("Line Chart Example with JFreechart");
 
@@ -30,36 +31,18 @@ public class LineChart extends JFrame {
     }
 
     public JPanel createChartPanel() {
-        String chartTitle = "Programming Languages Trends";
-        String categoryAxisLabel = "Interest over time";
-        String valueAxisLabel = "Popularity";
+        String chartTitle = "Desired Tuning Value Derived from Gradient Descent";
+        String categoryAxisLabel = "Tuning Variable";
+        String valueAxisLabel = "Loss";
 
-        dataset = createDataset();
+        dataset = new DefaultCategoryDataset();
 
         JFreeChart chart = ChartFactory.createLineChart(chartTitle,
                 categoryAxisLabel, valueAxisLabel, dataset);
-
         return new ChartPanel(chart);
     }
 
-    public DefaultCategoryDataset createDataset() {
-        dataset = new DefaultCategoryDataset();
-        String xAxis = "Tuning Variable";
-//        dataset.addValue(5.0, xAxis, String.valueOf(1));
-//        dataset.addValue(9.0, xAxis, String.valueOf(2));
-//        dataset.addValue(3.0, xAxis, String.valueOf(3));
-//        dataset.addValue(12.0, xAxis, String.valueOf(4));
-//        dataset.addValue( 15 , "schools" , "1970" );
-//        dataset.addValue( 30 , "schools" , "1980" );
-//        dataset.addValue( 60 , "schools" ,  "1990" );
-//        dataset.addValue( 120 , "schools" , "2000" );
-//        dataset.addValue( 240 , "schools" , "2010" );
-//        dataset.addValue( 300 , "schools" , "2014" );
-        return dataset;
-    }
-
-
-    public void addDataToChart(double y, double x){
-        dataset.addValue(y, "Tuning Variable", String.valueOf(x));
+    public void addDataToChart(double x, double y){
+        dataset.addValue(y, "Tuning Variable", String.format("% .0f", x));
     }
 }

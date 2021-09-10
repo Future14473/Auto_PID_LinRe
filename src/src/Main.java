@@ -7,13 +7,14 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args){
-//        double[] ourLoss = {1,2,2,3,4};
-//        System.out.println(StandardDev.getStandardDev(ourLoss));
+    public static void main (String[] args) throws IOException {
+        // Graphics
+        LineChart myChart = new LineChart();
 
         // rand initialized values
         double learningRate = 0.02;
@@ -25,9 +26,7 @@ public class Main {
         //current tuner var is just our manually inputted next guess
         double currentTunerVar = 4, currentLoss = testFunc(currentTunerVar);
 
-        LineChart myChart = new LineChart();
-//        myChart.setVisible(true);
-        int epochs = 30;
+        int epochs = 500;
         for (int i = 0; i < epochs; i++) {
             double nextTunerVar = testGrad.getNextTunerVar(currentLoss, lastLoss,currentTunerVar, lastTunerVar);
 
@@ -39,16 +38,14 @@ public class Main {
             currentTunerVar = nextTunerVar;
             lastLoss = currentLoss;
             currentLoss = testFunc(currentTunerVar);
+            myChart.addDataToChart(currentTunerVar, currentLoss);
+            System.in.read();
         }
-
-        myChart.addDataToChart(4.0, 3);
-        myChart.addDataToChart(3,2);
-        myChart.addDataToChart(6,3);
     }
     // quadratic fn
     static double testFunc(double n){
 //        return Math.pow(n, 10);
 //        return Math.pow(n, 3) + Math.pow(n, 2) + 7;
-        return Math.pow(n, 2);
+        return Math.pow(n+1, 3); // this is (x+1)^3
     }
 }
