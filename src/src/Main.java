@@ -15,6 +15,7 @@ public class Main {
     public static void main (String[] args) throws IOException {
         // Graphics
         LineChart myChart = new LineChart();
+        Scanner scanner = new Scanner(System.in);
 
         // rand initialized values
         double learningRate = 0.02;
@@ -26,11 +27,13 @@ public class Main {
         //current tuner var is just our manually inputted next guess
         double currentTunerVar = 4, currentLoss = testFunc(currentTunerVar);
 
-        int epochs = 500;
-        for (int i = 0; i < epochs; i++) {
+//        int epochs = 500;
+//        for (int i = 0; i < epochs; i++) {
+        int i = 0;
+        while(! scanner.nextLine().equals(" ")){
             double nextTunerVar = testGrad.getNextTunerVar(currentLoss, lastLoss,currentTunerVar, lastTunerVar);
 
-            System.out.println("Current Iteration: " + (i + 1));
+            System.out.println("Current Iteration: " + (i++));
             System.out.println("Current Loss: " + currentLoss);
             System.out.println("Current Tuner Var: " + nextTunerVar);
 
@@ -39,8 +42,9 @@ public class Main {
             lastLoss = currentLoss;
             currentLoss = testFunc(currentTunerVar);
             myChart.addDataToChart(currentTunerVar, currentLoss);
-            System.in.read();
         }
+        System.out.println("Current Iteration " + i + " | Final TunerVar " + currentTunerVar + " | Final Loss: " + currentLoss);
+        System.exit(0);
     }
     // quadratic fn
     static double testFunc(double n){
