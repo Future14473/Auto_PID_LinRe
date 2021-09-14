@@ -15,6 +15,7 @@ public class Main {
     public static void main (String[] args) throws IOException {
         // Graphics
         LineChart myChart = new LineChart();
+//        LineChart actualGraph = new LineChart();
         Scanner scanner = new Scanner(System.in);
 
         // rand initialized values
@@ -41,6 +42,7 @@ public class Main {
             lastLoss = currentLoss;
             currentLoss = testFunc(currentTunerVar);
             myChart.addDataToChart(currentTunerVar, currentLoss);
+//            actualGraph.addDataToChart(currentTunerVar, testFunc(currentTunerVar));
         }
         System.out.println("Current Iteration " + i + " | Final TunerVar " + currentTunerVar + " | Final Loss: " + currentLoss);
 //        System.exit(0);
