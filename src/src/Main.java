@@ -41,7 +41,7 @@ public class Main {
         int i = 0;
         while(! scanner.nextLine().equals(" ") && (i < 32)){
             double nextTunerVar = testGrad.getNextTunerVar(currentLoss, lastLoss,currentTunerVar, lastTunerVar);
-A
+
             System.out.println("Current Iteration: " + (i++));
             System.out.println("Current Loss: " + currentLoss);
             System.out.println("Current Tuner Var: " + nextTunerVar);
