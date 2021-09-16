@@ -1,5 +1,6 @@
 package Graphics;
 
+import Utils.CostRecorders.CostRecorder;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -39,7 +40,13 @@ public class LineChart extends JFrame {
         return new ChartPanel(chart);
     }
 
-    public void addDataToChart(double x, double y, int decimalPoints){
+    public void addData(double x, double y, int decimalPoints){
         dataset.addValue(y, "Tuning Variable", String.format("% ." + decimalPoints +"f", x));
+    }
+
+    public void plotTheoreticalFunction(CostRecorder costRecorder){
+        for (int i = -10; i < 11; i++) {
+            this.addData(i, costRecorder.getCost(i),0);
+        }
     }
 }
