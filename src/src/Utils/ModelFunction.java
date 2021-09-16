@@ -1,6 +1,6 @@
 package Utils;
 
-public class ModelFunction {
+public class ModelFunction implements CostRecorder {
     int functionType;
     double yOffset;
     int flip;
@@ -11,7 +11,8 @@ public class ModelFunction {
         this.flip = flip;
     }
 
-    public double getLoss(double x){
+    @Override
+    public double getCost(double x){
         return Math.abs(
                 Math.pow(x, functionType) + yOffset // just a parent function with translations
         );

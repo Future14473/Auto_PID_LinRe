@@ -6,16 +6,16 @@ public class GradientDescentTuner {
             lastCost, lastTunerVar,
             currentCost, currentTunerVar,
             learningRate;
-    ModelFunction costRecorder; // TODO make this an interface
+    CostRecorder costRecorder; // TODO make this an interface
 
     // note costCapturer will be replaced with robot hardware later
-    public GradientDescentTuner(double learningRate, ModelFunction costRecorder, double tuner1, double tuner2){
+    public GradientDescentTuner(double learningRate, CostRecorder costRecorder, double tuner1, double tuner2){
         this.learningRate = learningRate;
         this.costRecorder = costRecorder;
         this.lastTunerVar = tuner1;
         this.currentTunerVar = tuner2;
-        this.lastCost = costRecorder.getLoss(lastTunerVar);
-        this.currentCost = costRecorder.getLoss(currentTunerVar);
+        this.lastCost = costRecorder.getCost(lastTunerVar);
+        this.currentCost = costRecorder.getCost(currentTunerVar);
     }
 
     public void calculateNextTunerVar(){
@@ -26,7 +26,7 @@ public class GradientDescentTuner {
         lastCost = currentCost;
         lastTunerVar = currentTunerVar;
         currentTunerVar = nextTunerVar;
-        currentCost = costRecorder.getLoss(nextTunerVar); //TODO Get next loss
+        currentCost = costRecorder.getCost(nextTunerVar); //TODO Get next loss
     }
 
     public void printVals(){
