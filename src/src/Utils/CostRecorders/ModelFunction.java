@@ -1,4 +1,4 @@
-package Utils;
+package Utils.CostRecorders;
 
 public class ModelFunction implements CostRecorder {
     int functionType;

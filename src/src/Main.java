@@ -1,8 +1,8 @@
 import Graphics.ActualGraph;
 import Graphics.LineChart;
-import Utils.FunctionType;
+import Utils.Math.FunctionType;
 import Utils.GradientDescentTuner;
-import Utils.ModelFunction;
+import Utils.CostRecorders.ModelFunction;
 
 import java.io.IOException;
 import java.util.Scanner;

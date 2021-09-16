@@ -1,4 +1,4 @@
-package Utils;
+package Utils.Math;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

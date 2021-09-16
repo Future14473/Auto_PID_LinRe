@@ -1,4 +1,4 @@
-package Utils;
+package Utils.Math;
 
 public class FunctionType {
     public static int LINEAR = 1;

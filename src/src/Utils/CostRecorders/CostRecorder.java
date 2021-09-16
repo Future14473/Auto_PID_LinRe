@@ -1,4 +1,4 @@
-package Utils;
+package Utils.CostRecorders;
 
 public interface CostRecorder {
 

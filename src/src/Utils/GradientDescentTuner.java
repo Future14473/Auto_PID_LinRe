@@ -1,6 +1,8 @@
 package Utils;
 
 
+import Utils.CostRecorders.CostRecorder;
+
 public class GradientDescentTuner {
     double  nextTunerVar,
             lastCost, lastTunerVar,
