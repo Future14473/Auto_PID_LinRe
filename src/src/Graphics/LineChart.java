@@ -16,9 +16,13 @@ import java.awt.*;
  */
 public class LineChart extends JFrame {
     DefaultCategoryDataset dataset;
-    String xAxis = "Example Tuning Variable";
-    public LineChart() {
-        super("Line Chart Example with JFreechart");
+    String xAxisLabel, yAxisLabel,  chartTitle, tuningVarName;
+    public LineChart(String windowTitle, String chartTitle, String tuningVarName, String xAxisTitle, String yAxisLabel) {
+        super(windowTitle);
+        this.xAxisLabel = xAxisTitle;
+        this.chartTitle = chartTitle;
+        this.yAxisLabel = yAxisLabel;
+        this.tuningVarName = tuningVarName;
 
         JPanel chartPanel = createChartPanel();
         add(chartPanel, BorderLayout.CENTER);
@@ -30,18 +34,12 @@ public class LineChart extends JFrame {
     }
 
     public JPanel createChartPanel() {
-        String chartTitle = "Desired Tuning Value Derived from Gradient Descent";
-        String categoryAxisLabel = "Tuning Variable";
-        String valueAxisLabel = "Loss";
-
         dataset = new DefaultCategoryDataset();
-
-        JFreeChart chart = ChartFactory.createLineChart(chartTitle,
-                categoryAxisLabel, valueAxisLabel, dataset);
+        JFreeChart chart = ChartFactory.createLineChart(chartTitle, tuningVarName, yAxisLabel, dataset);
         return new ChartPanel(chart);
     }
 
-    public void addDataToChart(double x, double y){
-        dataset.addValue(y, "Tuning Variable", String.format("% .2f", x));
+    public void addDataToChart(double x, double y, int decimalPoints){
+        dataset.addValue(y, "Tuning Variable", String.format("% ." + decimalPoints +"f", x));
     }
 }
