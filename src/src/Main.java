@@ -51,6 +51,6 @@ public class Main {
 //        return Math.pow(n, 3) + Math.pow(n, 2) + 7;
 //        return Math.pow(n+1, 3); // this is (x+1)^3
 //        return Math.pow(n, 2);
-        return Math.abs(Math.pow(n, 2));
+        return Math.abs(Math.pow(n-1, 2));
     }
 }
