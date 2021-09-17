@@ -16,12 +16,12 @@ public class GradientDescentTuner {
         this.costRecorder = costRecorder;
         this.lastTunerVar = tuner1;
         this.currentTunerVar = tuner2;
-        this.lastCost = costRecorder.getCost(lastTunerVar);
-        this.currentCost = costRecorder.getCost(currentTunerVar);
+        this.lastCost = this.costRecorder.getCost(lastTunerVar);
+        this.currentCost = this.costRecorder.getCost(currentTunerVar);
     }
 
     public void calculateNextTunerVar(){
-        nextTunerVar = -getDerivCost() * learningRate;
+        nextTunerVar -= getDerivCost() * learningRate;
     }
 
     public void update(){
@@ -51,6 +51,14 @@ public class GradientDescentTuner {
     }
     double getDerivative(double x1, double y1, double x2, double y2){
         return (y1-y2) / (x1-x2);
+    }
+
+    public double getLastCost() {
+        return lastCost;
+    }
+
+    public double getLastTunerVar() {
+        return lastTunerVar;
     }
 
     public double getCurrentTunerVar() {

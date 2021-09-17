@@ -33,6 +33,8 @@ public class Main {
         GradientDescentTuner kP_Tuner = new GradientDescentTuner(0.02, modelFunction, 5, 4);
         theoreticalFunction.plotTheoreticalFunction(modelFunction);
 
+        tuningGraph.addData(kP_Tuner.getLastTunerVar(), kP_Tuner.getLastCost(), 2);
+        tuningGraph.addData(kP_Tuner.getCurrentTunerVar(), kP_Tuner.getCurrentCost(), 2);
         int i = 2; // already 2 test done when initializing GradientDescentTuner
         while(! scanner.nextLine().equals(" ") && (i < 34)){
             kP_Tuner.printVals();
