@@ -36,6 +36,16 @@ public class GradientDescentTuner {
         System.out.println("Current Tuner Var: " + currentTunerVar);
     }
 
+    public void printDebug(){
+        System.out.println("Last Tuner Var: " + lastTunerVar);
+        System.out.println("Last Loss: " + lastCost);
+        System.out.println("Current Tuner Var: " + currentTunerVar);
+        System.out.println("Current Loss: " + currentCost);
+        System.out.println("Derivative of Cost: " + getDerivCost());
+        System.out.println("Next Tuner Var: " + nextTunerVar);
+        System.out.println();
+    }
+
     double getDerivCost(){
         return getDerivative(lastTunerVar, lastCost, currentTunerVar, currentCost);
     }
