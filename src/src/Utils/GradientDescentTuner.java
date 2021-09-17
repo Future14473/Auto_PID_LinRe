@@ -8,7 +8,7 @@ public class GradientDescentTuner {
             lastCost, lastTunerVar,
             currentCost, currentTunerVar,
             learningRate;
-    CostRecorder costRecorder; // TODO make this an interface
+    CostRecorder costRecorder;
 
     // note costCapturer will be replaced with robot hardware later
     public GradientDescentTuner(double learningRate, CostRecorder costRecorder, double tuner1, double tuner2){
@@ -32,16 +32,15 @@ public class GradientDescentTuner {
     }
 
     public void printVals(){
-
         System.out.println("Current Loss: " + currentCost);
-        System.out.println("Current Tuner Var: " + nextTunerVar);
+        System.out.println("Current Tuner Var: " + currentTunerVar);
     }
 
     double getDerivCost(){
         return getDerivative(lastTunerVar, lastCost, currentTunerVar, currentCost);
     }
     double getDerivative(double x1, double y1, double x2, double y2){
-        return (y1-y2)/ (x1-x2);
+        return (y1-y2) / (x1-x2);
     }
 
     public double getCurrentTunerVar() {
