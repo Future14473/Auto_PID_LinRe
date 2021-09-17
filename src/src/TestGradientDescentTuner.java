@@ -10,7 +10,7 @@ public class TestGradientDescentTuner {
                 -5,
                 -4
         );
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 3; i++) {
             tuner.calculateNextTunerVar();
             tuner.printDebug();
             tuner.update();
